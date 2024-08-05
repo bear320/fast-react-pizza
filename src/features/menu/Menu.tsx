@@ -1,14 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import { getMenu } from "../../services/apiRestaurant";
-import { Pizza } from "../../types/pizza";
+import { IPizza } from "../../types";
 import MenuItem from "./MenuItem";
 
 const Menu = () => {
-  const menu = useLoaderData() as Pizza[];
+  const menu = useLoaderData() as IPizza[];
 
   return (
     <ul>
-      {menu.map((pizza: Pizza) => (
+      {menu.map((pizza: IPizza) => (
         <MenuItem pizza={pizza} key={pizza.id} />
       ))}
     </ul>
