@@ -31,3 +31,7 @@ export interface IItem {
 export interface IUser {
   username: string;
 }
+
+export interface ICart {
+  cart: IItem[];
+}

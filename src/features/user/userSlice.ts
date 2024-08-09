@@ -1,12 +1,11 @@
+import { createSlice } from "@reduxjs/toolkit";
+import { IUser } from "../../types";
+
 // function getPosition() {
 //   return new Promise(function (resolve, reject) {
 //     navigator.geolocation.getCurrentPosition(resolve, reject);
 //   });
 // }
-
-import { createSlice } from "@reduxjs/toolkit";
-import Username from "./Username";
-import { IUser } from "../../types";
 
 // const fetchAddress = async () => {
 //   // 1) We get the user's geolocation position
