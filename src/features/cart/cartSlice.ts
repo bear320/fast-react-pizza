@@ -60,6 +60,8 @@ export const {
   clearCart,
 } = cartSlice.actions;
 
+export const getCart = (state: RootState) => state.cart.cart;
+
 export const getTotalCartQty = (state: RootState) =>
   state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
 
