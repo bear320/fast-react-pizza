@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks";
 import { RootState } from "../../store";
 import { IOrder } from "../../types";
 import { createOrder } from "../../services/apiRestaurant";
@@ -37,7 +37,7 @@ const fakeCart = [
 ];
 
 const CreateOrder = () => {
-  const username = useSelector((store: RootState) => store.user.username);
+  const username = useAppSelector((store: RootState) => store.user.username);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 

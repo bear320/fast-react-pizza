@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks";
 import { RootState } from "../../store";
 import { IItem } from "../../types";
 import LinkButton from "../../ui/LinkButton";
@@ -30,7 +30,7 @@ const fakeCart = [
 ];
 
 const Cart = () => {
-  const username = useSelector((store: RootState) => store.user.username);
+  const username = useAppSelector((store: RootState) => store.user.username);
 
   return (
     <div className="px-4 py-3">

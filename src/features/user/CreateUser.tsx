@@ -1,12 +1,12 @@
 import { useState, FormEvent } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { updateName } from "./userSlice";
 import Button from "../../ui/Button";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {

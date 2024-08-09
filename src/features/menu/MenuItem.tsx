@@ -1,9 +1,24 @@
-import { IPizza } from "../../types";
+import { useAppDispatch } from "../../hooks";
+import { IItem, IPizza } from "../../types";
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
+import { addItem } from "../cart/cartSlice";
 
 const MenuItem = ({ pizza }: { pizza: IPizza }) => {
+  const dispatch = useAppDispatch();
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
+  const handleAddToCart = () => {
+    const newItem: IItem = {
+      pizzaId: id,
+      name,
+      quantity: 1,
+      unitPrice,
+      totalPrice: unitPrice * 1,
+    };
+
+    dispatch(addItem(newItem));
+  };
 
   return (
     <li className="flex gap-4 py-2">
@@ -26,7 +41,11 @@ const MenuItem = ({ pizza }: { pizza: IPizza }) => {
             </p>
           )}
 
-          <Button type="small">Add to cart</Button>
+          {!soldOut && (
+            <Button type="small" onClick={handleAddToCart}>
+              Add to cart
+            </Button>
+          )}
         </div>
       </div>
     </li>

@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../hooks";
 import { RootState } from "../store";
 import CreateUser from "../features/user/CreateUser";
 import Button from "./Button";
 
 const Home = () => {
-  const username = useSelector((store: RootState) => store.user.username);
+  const username = useAppSelector((store: RootState) => store.user.username);
 
   return (
     <div className="my-10 px-4 text-center sm:my-16">
