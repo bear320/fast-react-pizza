@@ -27,3 +27,7 @@ export interface IItem {
   unitPrice: number;
   totalPrice: number;
 }
+
+export interface IUser {
+  username: string;
+}
