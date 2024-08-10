@@ -4,6 +4,7 @@ import { IItem, IPizza } from "../../types";
 import Button from "../../ui/Button";
 import DeleteItem from "../cart/DeleteItem";
 import { formatCurrency } from "../../utils/helpers";
+import UpdateItemQty from "../cart/UpdateItemQty";
 
 const MenuItem = ({ pizza }: { pizza: IPizza }) => {
   const dispatch = useAppDispatch();
@@ -46,7 +47,12 @@ const MenuItem = ({ pizza }: { pizza: IPizza }) => {
             </p>
           )}
 
-          {isInCart && <DeleteItem pizzaId={id} />}
+          {isInCart && (
+            <div className="flex items-center gap-3 sm:gap-8">
+              <UpdateItemQty pizzaId={id} currentQty={currentQty} />
+              <DeleteItem pizzaId={id} />
+            </div>
+          )}
 
           {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
