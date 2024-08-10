@@ -30,8 +30,17 @@ export interface IItem {
 
 export interface IUser {
   username: string;
+  status: "idle" | "loading" | "error";
+  position: IPosition | null;
+  address: string;
+  error: string;
 }
 
 export interface ICart {
   cart: IItem[];
+}
+
+export interface IPosition {
+  latitude: number;
+  longitude: number;
 }
