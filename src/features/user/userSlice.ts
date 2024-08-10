@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPosition, IUser } from "../../types";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { IUser } from "../../types";
 import { getAddress } from "../../services/apiGeocoding";
 
 const getPosition = (): Promise<GeolocationPosition> => {
@@ -57,9 +57,10 @@ const userSlice = createSlice({
           );
         }
       })
-      .addCase(fetchAddress.rejected, (state, action) => {
+      .addCase(fetchAddress.rejected, (state) => {
         state.status = "error";
-        state.error = action.error.message ?? "";
+        state.error =
+          "There was a problem getting your address. Make sure to fill this field!";
       });
   },
 });
