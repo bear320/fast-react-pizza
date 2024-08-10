@@ -1,12 +1,17 @@
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { addItem, getCurrentQtyById } from "../cart/cartSlice";
 import { IItem, IPizza } from "../../types";
 import Button from "../../ui/Button";
+import DeleteItem from "../cart/DeleteItem";
 import { formatCurrency } from "../../utils/helpers";
-import { addItem } from "../cart/cartSlice";
 
 const MenuItem = ({ pizza }: { pizza: IPizza }) => {
   const dispatch = useAppDispatch();
+
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
+
+  const currentQty = useAppSelector(getCurrentQtyById(id));
+  const isInCart = currentQty > 0;
 
   const handleAddToCart = () => {
     const newItem: IItem = {
@@ -41,7 +46,9 @@ const MenuItem = ({ pizza }: { pizza: IPizza }) => {
             </p>
           )}
 
-          {!soldOut && (
+          {isInCart && <DeleteItem pizzaId={id} />}
+
+          {!soldOut && !isInCart && (
             <Button type="small" onClick={handleAddToCart}>
               Add to cart
             </Button>
